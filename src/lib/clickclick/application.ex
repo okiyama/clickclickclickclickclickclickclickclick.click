@@ -7,10 +7,10 @@ defmodule ClickClick.Application do
 
   def start(_type, _args) do
     children = [
-      {Bandit, plug: ClickClick.Router}
+      {Bandit, plug: ClickClick.Router},
+      ClickClick.Bucket
     ]
 
-    opts = [strategy: :one_for_one, name: ClickClick.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 end
