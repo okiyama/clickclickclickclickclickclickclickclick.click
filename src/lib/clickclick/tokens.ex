@@ -1,4 +1,4 @@
-defmodule ClickClick.Bucket do
+defmodule ClickClick.Tokens do
   use Agent, restart: :transient
 
   def start_link(_opts) do
@@ -15,5 +15,9 @@ defmodule ClickClick.Bucket do
 
   def put_new(key, value) do
     Agent.update(__MODULE__, &Map.put_new(&1, key, value))
+  end
+
+  def ban(id) do
+    put(id, -1)
   end
 end
