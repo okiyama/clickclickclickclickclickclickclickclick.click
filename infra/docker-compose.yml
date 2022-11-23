@@ -1,0 +1,17 @@
+services:
+  clickclick:
+    image: clickclick:latest
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+
+  proxy:
+    image: jonasal/nginx-certbot:latest
+    restart: unless-stopped
+    environment:
+      CERTBOT_EMAIL: "9clicksdotclick@gmail.com"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-certbot:/etc/nginx/user_conf.d
