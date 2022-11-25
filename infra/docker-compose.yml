@@ -1,12 +1,6 @@
 version: "3"
 
 services:
-  clickclick:
-    image: clickclick:latest
-    restart: unless-stopped
-    ports:
-      - "5000:5000"
-
   proxy:
     image: jonasal/nginx-certbot:latest
     restart: unless-stopped
